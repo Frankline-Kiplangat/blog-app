@@ -1,0 +1,82 @@
+<!--styles-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<!-- navbar-->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand" href="#">Blog App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home
+          <span class="sr-only" href="/about">About</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="dropdown-item" href="https://github.com/Frankline-Kiplangat" target="_blank">Github</a>
+      </li>
+        {% if current_user.is_authenticated %}
+      <li class="nav-item">
+            <a class="nav-link" href="{{url_for('new_post') }}">New Post</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Dropdown
+        </a>
+        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+        </div>
+      </li>
+    </ul>
+<li class="nav-item">
+          <a class="nav-link waves-effect waves-light" href="https://twitter.com/">
+            <i class="fab fa-twitter" ></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" href="https://www.instagram.com/">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" href="https://github.com/">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" href="https://www.linkedin.com/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default">
+        <li class="nav-item">
+         <ul class="navbar-nav ml-auto nav-flex-icons">
+        {% if current_user.is_authenticated %}
+            <li class="nav-item">
+             <a class="nav-link" href="{{url_for('logout') }}">Logout</a>
+            </li>
+        {% else %}
+           <li class="nav-item">
+              <a class="nav-link" href="{{url_for('login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('register') }}">Register</a>
+            </li>
+          {% endif %}
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--end of navbar-->
