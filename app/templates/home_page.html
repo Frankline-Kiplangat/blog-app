@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% for post in posts %}
-    <article class="content-section">
+    <content class="content-section">
       <img class="round article-img" style="height: 200px; width: 200px;" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
         <div class="media-body">
           <div class="article-metadata">
@@ -11,6 +11,6 @@
           <h3><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h3>
           <p class="article-content">{{ post.content }}</p>
         </div>
-      </article>
+      </content>
     {%endfor%}
 {% endblock content %}
