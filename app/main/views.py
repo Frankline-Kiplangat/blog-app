@@ -14,12 +14,12 @@ from flask_login import login_user, current_user, logout_user, login_required
 @main.route("/home")
 def home():
     posts = Post.query.all()
-    return render_template('home.html', posts=posts)
+    return render_template('home_page.html', posts=posts)
 
 
 @main.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about_blog.html', title='About')
 
 
 @main.route("/register", methods=['GET', 'POST'])
@@ -88,7 +88,7 @@ def account():
         form.email.data = current_user.email
     image_file= url_for('static',filename='images/' + current_user.image_file)
     print(image_file, 'ase')
-    return render_template('account.html', title= 'Account', image_file= image_file, form=form)
+    return render_template('user_account.html', title= 'Account', image_file= image_file, form=form)
 
 @main.route("/post/new", methods=['GET', 'POST'])
 @login_required
@@ -100,12 +100,12 @@ def new_post():
         db.session.commit()
         flash('Post has been created', 'success')
         return redirect(url_for('home'))
-    return render_template('create_post.html', title= 'New Post', form=form, legend= 'New Post')
+    return render_template('create.html', title= 'New Post', form=form, legend= 'New Post')
 
 @main.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.title, post=post)
+    return render_template('post_article.html', title=post.title, post=post)
 
 @main.route("/post/<int:post_id>/update")
 @login_required
@@ -123,7 +123,7 @@ def update_post(post_id):
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
-    return render_template('create_post.html', title= 'Update Post', form=form, legend='Update Post')
+    return render_template('create.html', title= 'Update Post', form=form, legend='Update Post')
 
 @main.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
