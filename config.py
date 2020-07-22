@@ -1,0 +1,3 @@
+MAIL_USERNAME=kipfrankline@gmail.com
+MAIL_PASSWORD=frankdux32849179
+SECRET_KEY=1234
