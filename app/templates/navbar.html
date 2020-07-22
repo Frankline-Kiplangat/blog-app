@@ -22,10 +22,7 @@
       <li class="nav-item">
           <a class="dropdown-item" href="https://github.com/Frankline-Kiplangat" target="_blank">Github</a>
       </li>
-        {% if current_user.is_authenticated %}
-      <li class="nav-item">
-            <a class="nav-link" href="{{url_for('new_post') }}">New Post</a>
-      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Dropdown
@@ -63,8 +60,14 @@
         <li class="nav-item">
          <ul class="navbar-nav ml-auto nav-flex-icons">
         {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('new_post') }}">New Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('account') }}">Account</a>
+          </li>
             <li class="nav-item">
-             <a class="nav-link" href="{{url_for('logout') }}">Logout</a>
+              <a class="nav-link" href="{{url_for('logout') }}">Logout</a>
             </li>
         {% else %}
            <li class="nav-item">
@@ -79,4 +82,8 @@
     </ul>
   </div>
 </nav>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 <!--end of navbar-->
