@@ -2,9 +2,9 @@
 {% block content %}
     {% for post in posts %}
     <article class="media content-section">
-      <img class="square article-img" style="height: 100px; width: 200px;" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
-        <div class="media-body">
-          <div class="article-metadata">
+      <img style="height: 100px; width: 200px; border-radius:40%" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
+        <div>
+          <div class="article-data">
             <a class="mr-2" href="#">{{ post.author.username }}</a>
             <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
           </div>
