@@ -13,7 +13,7 @@
             {% for error in form.title.errors %}
                   <span>{{ error }}</span>
                 {% endfor %}
-  </div>
+    </div>
      {% else %}
         {{ form.title(class="form-control form-control-lg") }}
      {% endif %}
@@ -30,9 +30,9 @@
    {% else %}
 {{ form.content(class="form-control form-control-lg") }}
      {% endif %}
- </div>                
+</div>                
     </fieldset>
-     <div class="form-group form group">
+    <div class="form-group form group">
              {{ form.submit(class="btn btn-outline-primary") }}
             </div>            
         </form>
