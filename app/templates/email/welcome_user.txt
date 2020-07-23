@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to Pitch App
+We have just seen you have signed up for our application. Welcome to the family. Enjoy!
