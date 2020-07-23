@@ -6,7 +6,7 @@ from . import app, db, bcrypt
 from .forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from .models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
-
+from ..email import mail_message
 
 
 
