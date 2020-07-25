@@ -1,21 +1,19 @@
-body {
-  min-height: 75rem;
-  padding-top: 4.5rem;
+.article{
+  text-align: center;
 }
-
-
-li {
-position: relative;}
-
-li:before {
-  content: '•••';
-  position: absolute;
-  right: 1px;
-  top: 0px;
-  color: aqua;
+.article-data{
+  justify-content: center;
+  float: center;
 }
-
-/* only for debugging */
-#navbarCollapse {
-    display: block;
+.header{
+  text-align: center; font-weight: bold; font-size: large;
+}
+.about{
+  text-align: center;
+}
+.article-image{
+  width:400px;
+  height:400px; 
+  text-align: center;
+   border-radius: 50%;
 }
