@@ -1,24 +1,36 @@
 from flask import Flask
+from config import configurations
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+from flask_login import LoginManager
+from flask_uploads import configure_uploads,IMAGES,UploadSet
 
-## Initializing application
-app = Flask(__name__, instance_relative_config = True)
-# app.config.from_object(DevConfig)
-# app.config.from_pyfile('config.py')
+app = Flask(__name__)
+db = SQLAlchemy()
+bootstrap = Bootstrap()
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'auth.login'
+photos = UploadSet('photos',IMAGES)
 
-# Initializing Flask Extensions
-bootstrap = Bootstrap(app)
+def create_app(configname):
+    '''
+    Method for creating the app to enable for easier configurations
+    '''
+    app.config.from_object(configurations[configname])
 
-app.config['SECRET_KEY'] = '1234'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myblog'
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
-login_manager.login_message_category = 'info'
+    #Importing BluePrints
+    from .auth import auth as auth_blueprint
+    from .main import main as main_blueprint
+    app.register_blueprint(auth_blueprint)
+    app.register_blueprint(main_blueprint)
 
+    #Initialising the Importations
+    db.init_app(app)
+    bootstrap.init_app(app)
+    login_manager.init_app(app)
 
-from app import views
+    # configure UploadSet
+    configure_uploads(app,photos)
+
+    return app

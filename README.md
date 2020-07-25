@@ -45,7 +45,7 @@ Users can do the following with the app:
 
 # Support and Contacts
 
-In case You have any query, kindly reach out via [Email](kipfrankline@gmail.com)
+In case You have any query, kindly reach out via [kipfrankline@gmail.com]
 
 
 ## Known Bugs
