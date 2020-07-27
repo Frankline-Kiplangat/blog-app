@@ -1,35 +1,32 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-class Config(object):
-     DEBUG = False
-     TESTING = False
-     QUOTES_API = 'http://quotes.stormconsultancy.co.uk/random.json'
-     SECRET_KEY = '1234'
-     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-     UPLOADED_PHOTOS_DEST='app/static/photos'
-    
-     
+class Config:
+    '''
+    General configuration settings
+    '''
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
+    QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
 
-class ProductionConfig(Config):
-    DEBUG = False
+class ProdConfig(Config):
+    '''
+    Production Configurations
+    '''
+    SECRET_KEY =('SECTRE_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
+class DevConfig(Config):
+    '''
+    Development Configurations
+    '''
+    SECRET_KEY="testkeyindevconfig"
+    # SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:1234@localhost/myblog"
     DEBUG = True
 
+class TestConfig(Config):
+    SECRET_KEY="testkeyintestconfig"
+    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://moringa:1234@localhost/myblog_test"
 
-class DevelopmentConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True
-
-
-config_options = {
-'test':TestingConfig,
-'production':ProductionConfig,
-'development': DevelopmentConfig
+configurations = {
+    "production":ProdConfig,
+    "development":DevConfig,
+    "testing":TestConfig
 }

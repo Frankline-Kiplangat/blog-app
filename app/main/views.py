@@ -108,3 +108,7 @@ def delete(article_id):
     db.session.delete(current_article)
     db.session.commit()
     return redirect(url_for('.index'))
+
+@main.route("/about")
+def about():
+    return render_template('about_blog.html', title='About')

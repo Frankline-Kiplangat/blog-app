@@ -2,24 +2,38 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-<div class="container">
+<style>
+    body {
+        background-image: url("");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    p{
+        font-size: medium;
+    }
+*div{
+    font-size: medium;
+}
+
+</style>
+<div class="container" style="font-size: medium;">
     <div>
-        <div class="panel panel-default">
-            <div class="panel-heading">Article</div>
+        <div class="panel panel-default" style="font-size: medium;">
+            <div class="panel-heading" style="font-size: medium;">Article</div>
             <div class="panel-body">
                 <p>{{ article.article }}</p>
-                <p><strong>by: {{ article.user.username }}</strong></p>
+                <p><strong>by:  {{ article.user.username }}</strong></p>
             </div>
             {% if article.user == current_user %}
                     <div>
-                        <a class="btn btn-primary btn-sm sm-1"href="{{url_for('main.update',article_id = article.id)}}">Update</a>
-                        <button type="button" class="btn btn-danger btn-sm sm-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        <a class="btn btn-primary"href="{{url_for('main.update',article_id = article.id)}}">Update</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
                     </div>
                     {% endif %}
         </div>
         <div class="row">
             <div class="col-md-6">
-                    <h1>comment and feedback section</h1>
+                    <h1>comments</h1>
                 <form action="/articlediscussion/{{article.id}}/comment" method="post">
                     <div class="form-group">
                         <input type="text" name="comment" class="form-control">
@@ -44,18 +58,20 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Delete Article?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <form action="{{url_for('.delete',article_id = article.id)}}" method="POST">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-              </form>
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div>
+        <h2 class="animated bounce infinite">Are you sure you want to delete?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary animated fadeInRight" data-dismiss="modal">Close</button>
+          <form action=" {{ url_for('.delete', article_id=article.id) }} " method="POST">
+              <input class="btn btn-danger animated fadeInLeft" type="submit" value="Delete">
+          </form>
             </div>
           </div>
         </div>
-      </div>
+</div>
 {% endblock %}

@@ -5,10 +5,25 @@
   <title>Blog</title>
   </head>
 {% block styles%}
+<style>
+.fab {
+  padding: 20px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+</style>
 <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 {% endblock %}
   <body style="text-align: center;">
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color" style="list-style-type:none;">
@@ -22,10 +37,10 @@
       <li class="nav-item active">
         <a class="nav-link" href="/" style="font-weight: bold; font-size: large;" >Home</a>
       </li>
+
       <li class="nav-item active">
         <a class="nav-link" href="/about" style="font-weight: bold; font-size: large;">About</a>
       </li>
-
     </ul>
 <li class="nav-item" style="list-style-type:none;">
           <a class="nav-link waves-effect waves-light" href="https://twitter.com/" target="_blank">
@@ -49,22 +64,22 @@
         </li>
         <li class="nav-item">
          <ul class="navbar-nav ml-auto nav-flex-icons">
-        {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('main.create_post') }}">New Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('main.profile') }}">Profile</a>
-          </li>
+            {% if current_user.is_authenticated %}
+
+  
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('auth.logout') }}"> Sign out</a>
+            <a class="nav-link" href="{{url_for('main.profile',username=current_user.username)}}" style="font-weight: bold; font-size: large;">{{current_user.username}}</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-link" href="{{url_for('auth.logout') }}" style="font-weight: bold; font-size: large;"> Sign out</a>
             </li>
         {% else %}
            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('auth.login') }}">Sign In</a>
+              <a class="nav-link" href="{{url_for('auth.login') }}" style="font-weight: bold; font-size: large;">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('auth.register') }}">Sign Up</a>
+              <a class="nav-link" href="{{url_for('auth.register') }}" style="font-weight: bold; font-size: large;">Sign Up</a>
             </li>
           {% endif %}
         </div>
@@ -73,9 +88,10 @@
   </div>
 </nav>
   </body>
-</html>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 <!--end of navbar-->
+</html>
