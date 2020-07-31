@@ -23,11 +23,16 @@
         div{
             font-size: medium;
     }
+    h1{
+        font-weight: bold;
+    }
 </style>
 <div class="landingspot">
     <div class="container-fluid">
         <div class="text-center">
             <h1>Welcome To MyBlog</h1>
+            <br>
+            <h1>Quotes<h1>
             <p style="font-size:medium;"><i>{{ quotes.quote }}</i></p>
             <p style="font-size: medium;">{{ quotes.author }}</p>
             <a href="{{url_for('main.add_article')}}" class="btn btn-primary" style="font-weight: bold; font-size: large;">Post An Article</a>
@@ -37,7 +42,7 @@
 <div class="container-fluid">
 <div class="row">
     <div style="font-size: medium;">
-        <h1 style="font-weight: bold; font-size: large;">Articles</h1>
+        <h1 style="font-weight: bold; font-size: large; float: left;">Articles</h1>
         {% for article in articles %}
         <div class="col-md-6">
             <div class="col-md-4">
@@ -45,7 +50,7 @@
                 <div>
                     <p style="font-size: medium;">{{ article.article}}</p>
                     <p style="font-size: medium;"><strong>{{ article.user.username }}</strong></p>
-                    <a href="{{url_for('main.comment',article_id=article.id)}}" class="btn btn-primary" style="font-size: medium;">Read More</a>
+                    <a href="{{url_for('main.comment',article_id=article.id)}}" class="btn btn-primary" style="font-size: medium;">Options</a>
                 </div>
             </div>
         </div>
